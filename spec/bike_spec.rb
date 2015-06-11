@@ -4,15 +4,16 @@ describe Bike do
   
 	it { is_expected.to respond_to :working? }
 
-	it 'is broken?' do
+	it 'is working?' do
+		expect(subject).to be_working
+	end
+
+	it 'can be reported as broken' do
+		expect(subject.report_broken).to eq true
+	end
+
+	it 'is broken after being reported as such' do
+		subject.report_broken
 		expect(subject).to be_broken
-	end
-
-	it 'can be reported as broken?' do
-		subject.report_broken?
-	end
-
-	it 'has been reported broken?' do
-		expect(subject).to be_report_broken
 	end
 end
