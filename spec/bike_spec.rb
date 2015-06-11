@@ -9,7 +9,7 @@ describe Bike do
 	end
 
 	it 'can be reported as broken' do
-		expect(subject.report_broken).to eq true
+		expect(subject.report_broken).to eq false
 	end
 
 	it 'is broken after being reported as such' do
