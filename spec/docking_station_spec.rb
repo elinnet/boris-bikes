@@ -29,6 +29,12 @@ describe DockingStation do
     expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
   end
 
+  describe 'capacity' do
+    it { is_expected.to respond_to :capacity= }
+  end
+
+
+
 end
 
  
