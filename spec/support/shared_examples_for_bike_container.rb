@@ -13,19 +13,19 @@ shared_examples_for BikeContainer do
 
   describe 'add_bike' do
     it 'receives a bike' do
-      subject.add_bike double :bike, empty?: false
-      expect(subject).not_to be_empty?
+      subject.add_bike double :bike, empty?: true
+      expect(subject).not_to be_empty
     end
 
     it 'raises an error when full' do
       subject.capacity.times {subject.add_bike double(:bike) }
       expect { subject.add_bike double(:bike) }.to raise_error "#{described_class.name} full"
     end
+  end
 
   describe 'remove_bike' do
-    let(:bike) { double :bike }
+    let(:bike) { Bike.new }
     before(:each) { subject.add_bike bike }
-  end
 
     it 'returns a bike' do
       expect(subject.remove_bike).to eq bike
@@ -38,16 +38,6 @@ shared_examples_for BikeContainer do
 
     it 'raises an error when empty' do
       subject.remove_bike
-      expect { subject.remove_bike }.to raise_error "#{described_class.name} empty"
-    end
-
-    it 'enables bikes to be removed' do 
-      bike = double :bike, empty?: true
-      subject.add_bike bike
-
-      expect(subject.remove_bike).to eq bike
-      expect(subject).to be_empty
-
       expect { subject.remove_bike }.to raise_error "#{described_class.name} empty"
     end
   end

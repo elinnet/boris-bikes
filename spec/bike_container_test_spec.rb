@@ -1,5 +1,5 @@
-require_relative './support/shared_examples_for_bike_container'
 require './lib/bike_container'
+require './spec/support/shared_examples_for_bike_container'
 
 class BikeContainerTest
   include BikeContainer
